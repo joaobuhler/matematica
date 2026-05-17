@@ -1,6 +1,5 @@
 from manim import *
 
-# ── Nova Paleta de Cores (Estilo Minimalista / Moderno) ─────────────────────────
 FUNDO         = "#121214"  
 COR_TITULO    = "#00f0ff"  
 COR_TRIANGULO = "#eceff4"  
@@ -136,7 +135,6 @@ class DeducaoHeron(Scene):
         self.play(Write(eq_subst))
         self.wait(1.5)
 
-        # CORREÇÃO 1: Usa .set_x(0) em vez de .center() para manter a posição UP intacta.
         self.play(
             FadeOut(self._x_estatico), FadeOut(eq_area1), 
             eq_subst.animate.to_edge(UP, buff=1.4).set_x(0)
@@ -159,7 +157,6 @@ class DeducaoHeron(Scene):
         self.play(Write(fat2))
         self.wait(2)
 
-        # CORREÇÃO 2: Novamente, set_x(0) garante centralização apenas horizontal.
         self.play(
             FadeOut(eq_dif), FadeOut(fat1),
             fat2.animate.to_edge(UP, buff=1.5).set_x(0)
@@ -174,7 +171,6 @@ class DeducaoHeron(Scene):
         novo_titulo.align_to(self.titulo_atual, UL)
         self.play(Transform(self.titulo_atual, novo_titulo))
 
-        # CORREÇÃO 3: O .center() foi removido daqui para respeitar o next_to()
         fatores_4 = self.eq(
             r"A^2 = \left(\frac{a+b+c}{2}\right)\left(\frac{-a+b+c}{2}\right)\left(\frac{a-b+c}{2}\right)\left(\frac{a+b-c}{2}\right)",
             size=19
